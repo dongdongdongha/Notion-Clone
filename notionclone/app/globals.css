@@ -31,3 +31,7 @@ body {
     text-wrap: balance;
   }
 }
+
+* {
+  align-self: flex-start;
+}
