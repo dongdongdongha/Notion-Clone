@@ -61,6 +61,9 @@ export const getSidebar = query({
 
     const documents = await ctx.db
       .query("documents")
+      .withIndex("by_user_parent", (q) =>
+        q.eq("userId", userId).eq("parentDocument", args.parentDocument)
+      )
       .filter((q) => q.eq(q.field("isArchived"), false))
       .order("desc")
       .collect();

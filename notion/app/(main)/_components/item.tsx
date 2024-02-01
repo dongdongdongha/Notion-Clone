@@ -6,6 +6,9 @@ import { Id } from "@/convex/_generated/dataModel";
 import { cn } from "@/lib/utils";
 import { api } from "@/convex/_generated/api";
 import { Skeleton } from "@/components/ui/Skeleton";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { useMutation } from "convex/react";
 
 interface ItemProps {
   id?: Id<"documents">;
@@ -38,6 +41,8 @@ export const Item = ({
     event.stopPropagation();
     onExpand?.();
   };
+  const router = useRouter();
+  const create = useMutation(api.documents.create);
 
   const onCreate = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     event.stopPropagation();
